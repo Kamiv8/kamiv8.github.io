@@ -12,17 +12,18 @@ const winExamples = [
   [2, 5, 8],
   [0, 4, 8],
   [6, 4, 2]
-]
+];
 
 const exDiv = `<div class="ex">X</div>`;
 const circle = `<div class="circle"></div>`;
 let activePlayer = exDiv;
+let winPlayer = null;
 let counter = 0;
 const showActivePlayer = (active) => {
   activePlayerBox.innerHTML = `<div>Teraz jest ruch: </div> ${active}`;
 }
-const showWinner = () => {
-  activePlayerBox.innerHTML = `Zwycięzcą jest: ${activePlayer}`
+const showWinner = (active) => {
+  activePlayerBox.innerHTML = `Zwycięzcą jest: ${active}`;
 }
 const checkIsWon = () => {
   for (let i = 0; i < table.length - 1; i++) {
@@ -76,6 +77,7 @@ const resetGame = () => {
     x.innerHTML = '';
   })
   counter = 0;
+  window.location.reload();
 }
 
 
@@ -86,23 +88,24 @@ cells.forEach(cell => {
       if (activePlayer === exDiv) {
         cell.innerHTML = exDiv;
         addToMatrix(cell.id);
-        if (checkIsWon()) {
-          showWinner();
-        }
+        winPlayer = activePlayer;
         activePlayer = circle;
+        cell.disabled = true;
         showActivePlayer(activePlayer);
       } else {
         cell.innerHTML = circle;
         addToMatrix(cell.id);
-        if (checkIsWon()) {
-          showWinner();
-        }
+        winPlayer = activePlayer;
         activePlayer = exDiv;
         showActivePlayer(activePlayer);
       }
 
     }
-    if (counter === 9){
+    if (checkIsWon()) {
+      cells.forEach(x => x.disabled = true);
+      showWinner(winPlayer);
+    }
+    if (counter === 9) {
       activePlayerBox.innerHTML = "Remis";
     }
   })
