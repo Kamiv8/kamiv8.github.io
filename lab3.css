@@ -8,7 +8,7 @@ main {
 
 .board {
     width: 100%;
-    height: 100%;
+    height: 70%;
     margin-top: 50px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -20,6 +20,11 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+
+.cell:hover {
+    background: radial-gradient(circle, rgba(154, 22, 43, 0.5) 0%, rgba(255, 102, 32, 0.5) 100%);
 }
 
 .ex {
@@ -27,10 +32,42 @@ main {
     color: blue;
     font-weight: 900;
 }
+
 .circle {
     border: 4px solid red;
     border-radius: 50%;
     width: 100px;
     height: 100px;
 
+}
+
+.activePlayer {
+    margin-top: 5vh;
+    display: flex;
+    height: 200px;
+    background-color: antiquewhite;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    box-shadow: 10px 10px 20px #818181;
+}
+
+.reset {
+    width: 200px;
+    height: 50px;
+    background-color: indianred;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.reset:hover {
+    background-color: palevioletred;
+}
+.resetWrapper {
+    display: flex;
+    justify-content: center;
 }
