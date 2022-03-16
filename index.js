@@ -86,25 +86,24 @@ cells.forEach(cell => {
       if (activePlayer === exDiv) {
         cell.innerHTML = exDiv;
         addToMatrix(cell.id);
-        showActivePlayer(activePlayer);
         if (checkIsWon()) {
           showWinner();
-        } else if (counter === 9) {
-          activePlayerBox.innerHTML = 'Remis';
         }
         activePlayer = circle;
+        showActivePlayer(activePlayer);
       } else {
         cell.innerHTML = circle;
         addToMatrix(cell.id);
-        showActivePlayer(activePlayer);
         if (checkIsWon()) {
           showWinner();
-        } else if (counter === 9) {
-          activePlayerBox.innerHTML = 'Remis';
         }
         activePlayer = exDiv;
+        showActivePlayer(activePlayer);
       }
 
+    }
+    if (counter === 9){
+      activePlayerBox.innerHTML = "Remis";
     }
   })
 })
