@@ -105,9 +105,12 @@ cells.forEach(cell => {
       cells.forEach(x => x.disabled = true);
       showWinner(winPlayer);
     }
-    if (counter === 9) {
-      activePlayerBox.innerHTML = "Remis";
+    if (!checkIsWon()) {
+      if (counter === 9) {
+        activePlayerBox.innerHTML = "Remis";
+      }
     }
+
   })
 })
 resetBtn.addEventListener('click', () => resetGame())
